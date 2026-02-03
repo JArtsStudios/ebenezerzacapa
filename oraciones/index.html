@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oraciones</title>
+
+  <link rel="stylesheet" href="../css/oraciones.css" />
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="icon" href="../img/logo-small.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Background decoration -->
+  <div class="bg-decor" aria-hidden="true">
+    <span class="grid"></span>
+  </div>
+
+  <header class="topbar">
+    <a class="back" href="../" aria-label="Volver">
+      <span class="back__icon"><i class="bi bi-x-lg"></i></span>
+      <span class="back__text">Salir</span>
+    </a>
+
+    <div id="profile" class="topbar__profile"></div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero__content">
+        <p class="hero__badge">Peticion de Oración</p>
+        <h1 class="hero__title">¿Cuál es tu petición?</h1>
+        <p class="hero__subtitle">
+          Escribe tu solicitud con claridad. La recibiremos con respeto y confidencialidad.
+        </p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__card">
+        <div class="panel__head">
+          <h2 class="panel__title">Petición de Oración</h2>
+          <p class="panel__desc">Completa el formulario y presiona “Enviar”.</p>
+        </div>
+
+        <form id="formOracion" class="form">
+          <div class="form__grid">
+            <div class="field">
+              <label class="field__label">Nombre completo</label>
+              <input class="field__input" type="text" name="nombre" placeholder="Tu nombre" required>
+            </div>
+
+            <div class="field">
+              <label class="field__label">Número de teléfono</label>
+              <input class="field__input" type="tel" name="numero" placeholder="Ej: +504 9999-9999" required>
+            </div>
+
+            <div class="field field--full">
+              <label class="field__label">Correo electrónico</label>
+              <input class="field__input" type="email" name="correo" placeholder="tucorreo@ejemplo.com" required>
+            </div>
+
+            <div class="field field--full">
+              <label class="field__label">Petición (máximo 300 palabras)</label>
+              <textarea class="field__input field__textarea" name="peticion" maxlength="2000" placeholder="Escribe tu petición aquí..." required></textarea>
+              <div class="field__hint">Consejo: menciona lo esencial (situación + petición concreta).</div>
+            </div>
+          </div>
+
+          <button class="btn" type="submit">
+            <span class="btn__shine" aria-hidden="true"></span>
+            Enviar Petición
+          </button>
+
+          <p id="mensaje" class="message"></p>
+        </form>
+      </div>
+
+      <aside class="panel__side">
+        <div class="sidecard">
+          <h3 class="sidecard__title"> Gracias por confiar</h3>
+          <p class="sidecard__text">
+            Tu petición se recibe con amor y cuidado.
+          </p>
+        </div>
+
+        <div class="sidecard sidecard--soft">
+          <h3 class="sidecard__title"> Tiempo estimado</h3>
+          <p class="sidecard__text">
+            Enviar toma menos de 1 minuto. Si falla, revisa tu internet e intenta nuevamente.
+          </p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+
+
+  <footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <img src="../img/logo-small.png" alt="Logo Iglesia">
+            <p class="footer-quote">
+                Somos una Iglesia Bendecida, Prosperada en Victoria y Agradecida!
+            </p>
+        </div>
+
+        <div class="footer-socials">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/zacapa.fuente.poder" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/fuentedepoder_zacapa/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.tiktok.com/@zacapa.fuente.pod?_r=1&_t=ZS-93EfprcsfH0" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                <a href="https://youtube.com/@fuentedepoderzacapaministerios?si=-qYZChBf0HZDx_Y8" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            © 2025 Ebenezer Zacapa. All Rights Reserved. |
+            Developed by
+            <a href="https://jartsstudios.github.io/J-Arts-Studios/" target="_blank">
+                J Arts Studios
+            </a>
+        </p>
+    </div>
+</footer>
+
+
+
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("6E_NbgslAFw-DTIq4");
+    })();
+  </script>
+
+  <!-- Tu JS externo si lo usas -->
+  <script src="js/oraciones.js"></script>
+
+  <!-- MISMA LÓGICA (igual a la tuya) -->
+  <script>
+    document.getElementById("formOracion").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const mensaje = document.getElementById("mensaje");
+
+      emailjs.sendForm("service_kfnpuj1", "template_dycfhrm", this)
+        .then(() => {
+          mensaje.textContent = "Tu petición ha sido enviada correctamente.";
+          mensaje.className = "message success";
+          this.reset();
+        })
+        .catch((err) => {
+          mensaje.textContent = "Ocurrió un error al enviar. Intenta de nuevo.";
+          mensaje.className = "message error";
+        });
+    });
+  </script>
+
+</body>
+</html>

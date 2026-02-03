@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="../../img/logo-small.png" />
+<title>Registro</title>
+
+<style>
+/* =========================
+   PALETA (TU PALETA)
+   ========================= */
+:root{
+  --color-50:  #F0F2F4;
+  --color-100: #D6DBE1;
+  --color-200: #BCC4CD;
+  --color-300: #A1ADBA;
+  --color-400: #8796A6;
+  --color-500: #6C7F93;
+  --color-600: #596978;
+  --color-700: #45525E;
+  --color-800: #323B43;
+  --color-900: #1E2429;
+  --color-950: #0B0D0F;
+
+  /* Extras */
+  --bg: var(--color-950);
+  --card: rgba(30, 36, 41, .86); /* 900 con transparencia */
+  --card-strong: rgba(30, 36, 41, .95);
+  --border: rgba(214, 219, 225, .10);
+  --border-strong: rgba(214, 219, 225, .18);
+  --text: var(--color-50);
+  --muted: rgba(240, 242, 244, .72);
+  --shadow: 0 18px 55px rgba(0,0,0,.55);
+  --radius: 22px;
+
+  --focus: rgba(214, 219, 225, .55);
+  --glow: 0 0 0 4px rgba(214, 219, 225, .10);
+
+  --btn: linear-gradient(135deg, var(--color-200), var(--color-50));
+  --btnText: var(--color-950);
+  --btnHover: linear-gradient(135deg, var(--color-100), var(--color-50));
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+}
+
+/* Contenedor principal con scroll si crece */
+body{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding: 40px 15px;
+  overflow-y:auto;
+}
+
+/* =========================
+   HEADER / VOLVER
+   ========================= */
+header{
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 10;
+}
+
+.salir a{
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  background: rgba(11,13,15,.35);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  transition: transform .25s ease, background .25s ease, border-color .25s ease;
+}
+.salir a:hover{
+  transform: translateY(-1px);
+  background: rgba(50,59,67,.35);
+  border-color: rgba(214,219,225,.24);
+}
+
+/* =========================
+   FORM
+   ========================= */
+form{
+  width: 100%;
+  max-width: 460px;
+  margin-top: 80px; /* espacio para header fijo */
+
+  display:flex;
+  flex-direction:column;
+  gap: 18px;
+
+  padding: 34px 28px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow .25s ease;
+}
+
+form:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 24px 70px rgba(0,0,0,.6);
+}
+
+/* Encabezado */
+h2{
+  text-align:center;
+  font-weight: 700;
+  font-size: 1.85rem;
+  letter-spacing: .2px;
+  color: var(--color-50);
+  margin-bottom: 4px;
+}
+h2::after{
+  content:"";
+  display:block;
+  width: 86px;
+  height: 3px;
+  margin: 12px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(240,242,244,.85), transparent);
+}
+
+label{
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(240,242,244,.86);
+}
+
+/* Inputs / Select */
+input, select{
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(11,13,15,.35);
+  color: var(--text);
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .08s ease;
+}
+
+input::placeholder{
+  color: rgba(240,242,244,.45);
+}
+
+input:hover, select:hover{
+  border-color: rgba(214,219,225,.20);
+}
+
+input:focus, select:focus{
+  outline: none;
+  border-color: var(--focus);
+  box-shadow: var(--glow);
+  background: rgba(11,13,15,.48);
+}
+
+input:active{
+  transform: scale(.995);
+}
+
+/* Grupo: país + teléfono */
+.tel-row{
+  display:flex;
+  gap: 10px;
+}
+#codigoPais{
+  max-width: 120px;
+}
+
+/* Radios */
+.tecongregas, .cobertura{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* “Pills” para radio */
+.radio-container{
+  position: relative;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+
+  padding: 10px 12px 10px 42px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(11,13,15,.28);
+  cursor:pointer;
+  user-select:none;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.radio-container:hover{
+  border-color: rgba(214,219,225,.22);
+  background: rgba(11,13,15,.36);
+  transform: translateY(-1px);
+}
+
+.radio-container input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* Círculo */
+.checkmark{
+  position:absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(214,219,225,.55);
+  background: rgba(50,59,67,.35);
+  box-shadow: inset 0 0 0 3px rgba(11,13,15,.35);
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+/* Checked: estilo elegante con la paleta */
+.radio-container input:checked ~ .checkmark{
+  border-color: rgba(240,242,244,.9);
+  background: rgba(240,242,244,.75);
+  box-shadow:
+    inset 0 0 0 4px rgba(11,13,15,.55),
+    0 0 0 4px rgba(214,219,225,.08);
+}
+
+/* =========================
+   CONTENEDORES DINÁMICOS
+   ========================= */
+.dynamic-container{
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 1px solid transparent;
+  transition: max-height 0.35s ease, opacity 0.35s ease, margin-top 0.35s ease, padding-top .35s ease, border-color .35s ease;
+}
+
+.dynamic-container.visible{
+  max-height: 520px;
+  opacity: 1;
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(214,219,225,.10);
+}
+
+/* =========================
+   BOTÓN
+   ========================= */
+button{
+  margin-top: 8px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(240,242,244,.22);
+  background: var(--btn);
+  color: var(--btnText);
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, border-color .18s ease, background .18s ease;
+}
+
+button:hover{
+  background: var(--btnHover);
+  border-color: rgba(240,242,244,.35);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+}
+
+button:active{
+  transform: translateY(0px) scale(.99);
+  filter: brightness(.98);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 480px){
+  form{
+    padding: 28px 18px;
+    gap: 16px;
+    border-radius: 18px;
+  }
+  h2{ font-size: 1.45rem; }
+  input, select, button{ font-size: 0.95rem; }
+  .radio-container{ width: 100%; } /* más cómodo en móvil */
+  .tel-row{ flex-direction: column; }
+  #codigoPais{ max-width: 100%; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="salir"><a href="/escuela/">&#8592; Volver</a></div>
+</header>
+
+<form id="contactForm">
+  <h2>Registro</h2>
+
+  <label>¿Te congregas en alguna iglesia?</label>
+  <div class="tecongregas">
+    <label class="radio-container">Sí
+      <input type="radio" name="congregas" value="Sí" required>
+      <span class="checkmark"></span>
+    </label>
+    <label class="radio-container">No
+      <input type="radio" name="congregas" value="No" required>
+      <span class="checkmark"></span>
+    </label>
+  </div>
+
+  <div id="iglesiaNo" class="dynamic-container">
+    <label>¿Cuál es el nombre de tu iglesia?</label>
+    <input type="text" id="nombreIglesiaNo" name="nombreIglesiaNo">
+  </div>
+
+  <div id="coberturaPregunta" class="dynamic-container">
+    <label>¿Tu iglesia está bajo la cobertura de Ministerios Ebenezer?</label>
+    <div class="cobertura">
+      <label class="radio-container">Sí
+        <input type="radio" name="cobertura" value="Sí">
+        <span class="checkmark"></span>
+      </label>
+      <label class="radio-container">No
+        <input type="radio" name="cobertura" value="No">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </div>
+
+  <div id="iglesiaSi" class="dynamic-container">
+    <label>Nombre de la iglesia</label>
+    <input type="text" id="nombreIglesiaSi" name="nombreIglesiaSi">
+    <label>Nombre del pastor</label>
+    <input type="text" id="nombrePastor" name="nombrePastor">
+  </div>
+
+  <label>País</label>
+  <select id="pais" name="pais" required></select>
+
+  <label>Teléfono</label>
+  <div class="tel-row">
+    <select id="codigoPais" name="codigoPais"></select>
+    <input type="tel" id="telefono" name="telefono" required>
+  </div>
+
+  <label>Nombre</label>
+  <input type="text" id="nombre" name="nombre" required>
+
+  <label>Correo electrónico</label>
+  <input type="email" id="correo" name="correo">
+
+  <button type="submit">Registrar</button>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+// === EmailJS INIT ===
+emailjs.init("0s7txQoFEkZAkAaZP");
+
+const paises = [
+  { nombre: "Honduras", codigo: "+504" },
+  { nombre: "México", codigo: "+52" },
+  { nombre: "Guatemala", codigo: "+502" },
+  { nombre: "El Salvador", codigo: "+503" },
+  { nombre: "Nicaragua", codigo: "+505" },
+  { nombre: "Costa Rica", codigo: "+506" },
+  { nombre: "Estados Unidos", codigo: "+1" },
+  { nombre: "España", codigo: "+34" },
+  { nombre: "Colombia", codigo: "+57" },
+  { nombre: "Argentina", codigo: "+54" },
+  { nombre: "Perú", codigo: "+51" },
+  { nombre: "Chile", codigo: "+56" }
+];
+
+const paisSelect = document.getElementById("pais");
+const codigoSelect = document.getElementById("codigoPais");
+paises.forEach(p => {
+  const opt1 = document.createElement("option");
+  opt1.value = p.nombre;
+  opt1.textContent = p.nombre;
+  paisSelect.appendChild(opt1);
+
+  const opt2 = document.createElement("option");
+  opt2.value = p.codigo;
+  opt2.textContent = p.codigo;
+  codigoSelect.appendChild(opt2);
+});
+paisSelect.addEventListener("change", () => {
+  const sel = paises.find(p => p.nombre === paisSelect.value);
+  if (sel) codigoSelect.value = sel.codigo;
+});
+
+const congregasRadios = document.querySelectorAll('input[name="congregas"]');
+const coberturaRadios = document.querySelectorAll('input[name="cobertura"]');
+const iglesiaNo = document.getElementById("iglesiaNo");
+const coberturaPregunta = document.getElementById("coberturaPregunta");
+const iglesiaSi = document.getElementById("iglesiaSi");
+
+function clearInputs(container) {
+  container.querySelectorAll('input').forEach(i => i.value = "");
+  container.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+}
+
+function showElement(el) {
+  el.classList.add("visible");
+}
+function hideElement(el) {
+  el.classList.remove("visible");
+}
+
+// Congregas
+congregasRadios.forEach(r => {
+  r.addEventListener("change", () => {
+    if (r.value === "Sí") {
+      showElement(coberturaPregunta);
+      hideElement(iglesiaSi);
+      hideElement(iglesiaNo);
+      clearInputs(iglesiaSi);
+      clearInputs(iglesiaNo);
+    } else {
+      hideElement(coberturaPregunta);
+      hideElement(iglesiaSi);
+      hideElement(iglesiaNo);
+      clearInputs(iglesiaSi);
+      clearInputs(iglesiaNo);
+    }
+  });
+});
+
+// Cobertura
+coberturaRadios.forEach(r => {
+  r.addEventListener("change", () => {
+    if (r.value === "Sí") {
+      showElement(iglesiaSi);
+      hideElement(iglesiaNo);
+      clearInputs(iglesiaNo);
+    } else if (r.value === "No") {
+      showElement(iglesiaNo);
+      hideElement(iglesiaSi);
+      clearInputs(iglesiaSi);
+    }
+  });
+});
+
+// Envío EmailJS
+document.getElementById("contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const params = {
+    congregas: document.querySelector('input[name="congregas"]:checked')?.value || "",
+    cobertura: document.querySelector('input[name="cobertura"]:checked')?.value || "",
+    nombreIglesiaNo: document.getElementById("nombreIglesiaNo").value,
+    nombreIglesiaSi: document.getElementById("nombreIglesiaSi").value,
+    nombrePastor: document.getElementById("nombrePastor").value,
+    nombre: document.getElementById("nombre").value,
+    telefono: `${document.getElementById("codigoPais").value} ${document.getElementById("telefono").value}`,
+    correo: document.getElementById("correo").value,
+    pais: document.getElementById("pais").value
+  };
+  localStorage.setItem('nombre', params.nombre);
+  emailjs.send("service_wltl9a2", "template_fmrepao", params)
+    .then(() => {
+      alert("¡Registro enviado con éxito!");
+      window.location.href = "../../escuela/";
+      document.getElementById("contactForm").reset();
+    })
+    .catch(err => alert("Error al enviar el formulario: " + (err.text || err)));
+});
+</script>
+</body>
+</html>

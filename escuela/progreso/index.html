@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil de Usuario</title>
+
+  <link rel="stylesheet" href="../../css/perfil.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="icon" href="../../img/logo pequeño.png">
+</head>
+
+<body id="top">
+  <header>
+    <div class="page header-inner">
+      <a class="back" href="../../escuela/" aria-label="Volver">
+        <span class="back__icon"><i class="fas fa-arrow-left"></i></span>
+        <span class="back__text">Salir</span>
+      </a>
+
+      <div class="mini-profile" title="Perfil">
+        <div class="mini-profile__avatar" id="miniAvatar">🙂</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page contenido">
+    <section class="hero">
+      <div class="hero__top">
+        <div class="hero__badge">Perfil</div>
+        <h1 id="username">¡Hola, Usuario!</h1>
+        <p class="hero__sub">Aquí puedes ver tu avance en la Escuela de Doctrina.</p>
+      </div>
+
+      <div class="hero__stats">
+        <div class="stat">
+          <span class="stat__label">Completadas</span>
+          <strong class="stat__value" id="statDone">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Total</span>
+          <strong class="stat__value" id="statTotal">24</strong>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Progreso</span>
+          <strong class="stat__value" id="statPct">0%</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel progreso-container">
+      <div class="panel__head">
+        <h2>Progreso de Lecciones</h2>
+        <span class="hint" id="hintLine">Cargando…</span>
+      </div>
+
+      <div class="progreso" id="progresoGrid"></div>
+
+      <div class="cert" id="certArea" hidden>
+        <div class="cert__box">
+          <div class="cert__left">
+            <h3>¡Felicidades! 🎉</h3>
+            <p>Completaste todas las lecciones. Ya puedes descargar tu certificado.</p>
+          </div>
+          <a class="btn" href="../../img/certificado.png" download="certificado.png">
+            Descargar Certificado
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="subir">
+      <a href="#top">Subir ↑</a>
+    </div>
+  </main>
+
+  <script src="../../js/perfil.js"></script>
+</body>
+</html>

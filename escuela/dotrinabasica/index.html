@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../css/dotrinabasica.css" />
+  <link rel="stylesheet" href="../../css/footer.css">
+  <title>Doctrina Básica</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="../../img/logo-small.png">
+</head>
+
+<body id="top">
+  <header>
+    <div class="page header-inner">
+      <a class="salir" href="../../escuela/" aria-label="Volver">
+        <div class="icono-salir"><span>&lt;</span></div>
+        <h1 class="salir-h1">Salir</h1>
+      </a>
+
+      <!-- Si NO usas avatar aquí, puedes borrar este bloque -->
+      <div id="profile" title="Perfil">
+        <img id="avatar" src="../../img/logo pequeño.png" alt="avatar">
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container-titulo">
+      <div class="titulo">
+        <h1>DOTRINA BÁSICA · LECCIONES</h1>
+        <p>Avanza lección por lección. Las siguientes se desbloquean según tu progreso.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="lecciones-container"></div>
+    </div>
+
+    <div class="subir">
+      <a href="#top">Subir ↑</a>
+    </div>
+  </main>
+
+ <footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <img src="../../img/logo-small.png" alt="Logo Iglesia">
+            <p class="footer-quote">
+                Somos una Iglesia Bendecida, Prosperada en Victoria y Agradecida!
+            </p>
+        </div>
+
+        <div class="footer-socials">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/zacapa.fuente.poder" aria-label="Facebook">Facebook</a>
+                <a href="https://www.instagram.com/fuentedepoder_zacapa/" aria-label="Instagram">Instagram</a>
+                <a href="https://www.tiktok.com/@zacapa.fuente.pod?_r=1&_t=ZS-93EfprcsfH0" aria-label="TikTok">TikTok</a>
+                <a href="https://youtube.com/@fuentedepoderzacapaministerios?si=-qYZChBf0HZDx_Y8" aria-label="YouTube">YouTube</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            © 2025 Ebenezer Zacapa. All Rights Reserved. |
+            Developed by
+            <a href="https://jartsstudios.github.io/J-Arts-Studios/" target="_blank">
+                J Arts Studios
+            </a>
+        </p>
+    </div>
+</footer>
+  <script src="../../js/proteccion.js"></script>
+
+  <script>
+    // Generar lecciones y verificar progreso
+    document.addEventListener('DOMContentLoaded', () => {
+      const leccionesContainer = document.getElementById('lecciones-container');
+      const progreso = Number(localStorage.getItem('progreso') || 1);
+
+      for (let i = 1; i <= 24; i++) {
+        const leccion = document.createElement('div');
+        leccion.classList.add('leccion');
+
+        leccion.innerHTML = `
+          <a href="./leccion${i}/">
+            <div class="txt">
+              <strong>Lección ${i}</strong>
+              <span>${i <= progreso ? "Disponible" : "Bloqueada"}</span>
+            </div>
+            <div class="badge">${i <= progreso ? "Abrir" : "🔒"}</div>
+          </a>
+        `;
+
+        if (i > progreso) {
+          leccion.classList.add('bloqueada');
+          leccion.querySelector('a').onclick = (e) => e.preventDefault();
+        }
+
+        leccionesContainer.appendChild(leccion);
+      }
+    });
+
+    // Avatar (si existe en localStorage)
+    document.addEventListener('DOMContentLoaded', () => {
+      const avatar = localStorage.getItem('avatar');
+      const avatarElement = document.getElementById('avatar');
+
+      if (avatar && avatarElement) avatarElement.setAttribute('src', avatar);
+
+      if (avatarElement) {
+        avatarElement.addEventListener('click', () => {
+          window.location.href = 'perfil.html';
+        });
+      }
+    });
+  </script>
+
+  <script src="../../js/proteccion.js"></script>
+</body>
+</html>

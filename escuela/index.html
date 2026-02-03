@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portal de la Escuela de Doctrina Virtual - Iglesia Ebenezer Zacapa" />
+  <title>Escuela de Doctrina | Ebenezer Zacapa</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/escuela.css" />
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="icon" href="../img/logo-pequeno.png" />
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="../img/Logo.png" alt="Logo Iglesia Ebenezer Zacapa">
+    </div>
+
+    <div class="menu-icon" id="menu-icon" aria-label="Abrir menú" role="button">&#9776;</div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="../">Inicio</a>
+      <a href="../escuela/progreso/">Progresos</a>
+    </div>
+
+    <!-- (Opcional) avatar: si no existe en tu proyecto, puedes borrar este bloque -->
+
+  </div>
+
+  <!-- HERO -->
+  <div class="principal">
+    <div class="hero">
+      <div class="hero__bg">
+        <span class="orb orb--1"></span>
+        <span class="orb orb--2"></span>
+        <span class="orb orb--3"></span>
+        <span class="dust"></span>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__badge">
+          <i class="fa-solid fa-church"></i>
+          <span>Iglesia Ebenezer Zacapa</span>
+        </div>
+
+        <h1>ESCUELA DE DOCTRINA</h1>
+
+        <p class="hero__text">
+          Bienvenidos amados hermanos al portal de la <b>Escuela de Doctrina</b>.
+          Aquí podrás estudiar la Palabra del Señor, avanzar a tu ritmo y fortalecer tu vida espiritual.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#doctrina" class="btn btn--ghost">
+            <i class="fa-solid fa-book-bible"></i> Ver módulos
+          </a>
+          <a href="#" id="acceso" class="btn btn--primary">
+            <i class="fa-solid fa-play"></i> Iniciar Doctrina Básica
+          </a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+              <strong>Flexible</strong>
+              <span>Estudia a tu ritmo</span>
+            </div>
+          </div>
+          <div class="stat">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <div>
+              <strong>Evaluaciones</strong>
+              <span>Cortas y claras</span>
+            </div>
+          </div>
+          <div class="stat">
+            <i class="fa-solid fa-seedling"></i>
+            <div>
+              <strong>Crecimiento</strong>
+              <span>Formación constante</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__media" aria-hidden="true">
+        <div class="media-card">
+          <div class="media-card__top">
+            <i class="fa-solid fa-cross"></i>
+            <span>Doctrina • Discipulado • Servicio</span>
+          </div>
+
+          <div class="media-card__img">
+            <img src="../img/imagen-dotrina-basica.jpeg" alt="Escuela de Doctrina Ebenezer Zacapa">
+          </div>
+
+          <div class="media-card__bottom">
+            <div class="pill"><i class="fa-solid fa-book"></i> Lecciones</div>
+            <div class="pill"><i class="fa-solid fa-pen-to-square"></i> Evaluación</div>
+            <div class="pill"><i class="fa-solid fa-award"></i> Progreso</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fondo oscuro (MISMO ID para tu JS) -->
+  <div id="overlay" class="hidden"></div>
+
+  <!-- Banner Password (MISMO ID para tu JS) -->
+  <div id="banner" class="hidden" role="dialog" aria-modal="true" aria-label="Acceso a la Doctrina">
+    <span id="close-banner" class="close" role="button" aria-label="Cerrar">✖</span>
+
+    <div class="banner__head">
+      <div class="banner__icon"><i class="fa-solid fa-lock"></i></div>
+      <div>
+        <h3>Acceso a la Doctrina</h3>
+        <p>Introduce la contraseña para ingresar.</p>
+      </div>
+    </div>
+
+    <input type="password" class="contrasena" id="password" placeholder="Contraseña" autocomplete="current-password">
+    <button id="submit" class="enviar">Entrar</button>
+
+    <p id="mensaje" class="hidden"></p>
+    <a href="../escuela/registro/" class="nocontrasena">¿No tienes la contraseña?</a>
+  </div>
+
+  <!-- CARDS (MISMA ESTRUCTURA .container .card .content) -->
+  <div class="container">
+    <div class="card">
+      <div class="content">
+        <div class="icon-wrap">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <h2>Horario</h2>
+        <p>Organiza tus estudios según tu disponibilidad. Tu avance es tu decisión.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="content">
+        <div class="icon-wrap">
+          <i class="fa-solid fa-list-check"></i>
+        </div>
+        <h2>Evaluaciones</h2>
+        <p>Cada tema incluye una evaluación sencilla para reforzar lo aprendido.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCTRINA (MISMO .container2 y botón #acceso) -->
+  <div class="container2" id="doctrina">
+    <div class="titulo">
+      <h1>Doctrina Básica</h1>
+      <p>Fundamentos para edificar tu fe y caminar firme en la Palabra.</p>
+    </div>
+
+    <div class="module">
+      <div class="module__img">
+        <img src="../img/imagen-dotrina-basica.jpeg" alt="Doctrina Básica">
+      </div>
+
+      <div class="module__info">
+        <h3>Módulo 01</h3>
+        <ul>
+          <li><i class="fa-solid fa-check"></i>La Salvación</li>
+          <li><i class="fa-solid fa-check"></i> El Bautismo en agua</li>
+          <li><i class="fa-solid fa-check"></i> Las Facetas del Bautismo I</li>
+          <li><i class="fa-solid fa-check"></i> +21 lecciones más
+</li>
+        </ul>
+
+        <a href="#" id="acceso" class="btn btn--primary btn--wide">
+          <i class="fa-solid fa-play"></i> INICIAR
+        </a>
+
+        <small class="note">
+          <i class="fa-solid fa-circle-info"></i>
+          Acceso protegido para Hermanos registrados.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIOS -->
+  <div class="titulo-comentarios">
+    <h1>Testimonios</h1>
+    <p>Lo que Dios ha hecho a través del aprendizaje.</p>
+  </div>
+
+  <div class="comentarios-container">
+    <div class="comentarios">
+      <div class="info-de-usuario">
+        <div class="foto-coment">
+          <img src="../img/usuario_4.jpeg" alt="usuario">
+        </div>
+        <div class="nombres">
+          <h3>Hno.</h3>
+          <h2>Marvin López</h2>
+        </div>
+      </div>
+      <p>La doctrina me ayudó a ordenar mi fe y a entender mejor la Palabra. Hoy sirvo con más claridad y convicción.</p>
+    </div>
+
+    <div class="comentarios">
+      <div class="info-de-usuario">
+        <div class="foto-coment">
+          <img src="../img/usuario_3.jpeg" alt="usuario">
+        </div>
+        <div class="nombres">
+          <h3>Hna.</h3>
+          <h2>Ruth Hernández</h2>
+        </div>
+      </div>
+      <p>Aprendí fundamentos que antes no comprendía. Me fortaleció y me animó a perseverar en mi caminar con Cristo.</p>
+    </div>
+
+    <div class="comentarios">
+      <div class="info-de-usuario">
+        <div class="foto-coment">
+          <img src="../img/usuario_2.jpeg" alt="usuario">
+        </div>
+        <div class="nombres">
+          <h3>Hno.</h3>
+          <h2>Kevin Mejía</h2>
+        </div>
+      </div>
+      <p>Las evaluaciones son sencillas pero útiles. Me han ayudado a retener lo aprendido y aplicarlo en mi vida diaria.</p>
+    </div>
+
+    <div class="comentarios">
+      <div class="info-de-usuario">
+        <div class="foto-coment">
+          <img src="../img/usuario_1.jpeg" alt="usuario">
+        </div>
+        <div class="nombres">
+          <h3>Hna.</h3>
+          <h2>Paola Reyes</h2>
+        </div>
+      </div>
+      <p>La enseñanza trajo paz y dirección. Ahora tengo una base firme y un deseo más grande de servir en la iglesia.</p>
+    </div>
+  </div>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <img src="../img/logo-small.png" alt="Logo Iglesia">
+            <p class="footer-quote">
+                Somos una Iglesia Bendecida, Prosperada en Victoria y Agradecida!
+            </p>
+        </div>
+
+        <div class="footer-socials">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/zacapa.fuente.poder" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/fuentedepoder_zacapa/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.tiktok.com/@zacapa.fuente.pod?_r=1&_t=ZS-93EfprcsfH0" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                <a href="https://youtube.com/@fuentedepoderzacapaministerios?si=-qYZChBf0HZDx_Y8" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            © 2025 Ebenezer Zacapa. All Rights Reserved. |
+            Developed by
+            <a href="https://jartsstudios.github.io/J-Arts-Studios/" target="_blank">
+                J Arts Studios
+            </a>
+        </p>
+    </div>
+</footer>
+
+  <script src="../js/escuela.js"></script>
+</body>
+</html>
